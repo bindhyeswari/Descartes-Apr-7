@@ -45,8 +45,10 @@
             function fn(event) {
                 event.preventDefault();
 
-                ul.style.top = event.clientX + 'px';
-                ul.style.left = event.clientY + 'px';
+                console.log(event);
+
+                ul.style.left = event.clientX + 'px';
+                ul.style.top = event.clientY + 'px';
                 ul.style.display = 'block';
             }
 
