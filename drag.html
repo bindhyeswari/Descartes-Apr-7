@@ -15,7 +15,8 @@
             left: 0;
             width: 0;
             height: 0;
-            background-color: red;
+            background-color: rgba(255, 0, 0, 0.4);
+            border: 1px solid red;
         }
     </style>
     <script>
@@ -28,12 +29,17 @@
             function mouseMoveHandler(event) {
                 // get access to the currently created div element
                 var div = mouseMoveHandler.div;
+                var prev = mouseMoveHandler.initPos;
                 var curr = [event.clientX, event.clientY];
+                div.style.left = curr[0] < prev[0] ? curr[0] + 'px' : prev[0] + 'px';
+                div.style.top = curr[1] < prev[1] ? curr[1] + 'px' : prev[1] + 'px';
+                div.style.width = Math.abs(curr[0] - prev[0]) + 'px';
+                div.style.height = Math.abs(curr[1] - prev[1]) + 'px';
             }
 
 
             // listen for mousedown event
-            document.body.addEventListener('mousedown', function () {
+            document.body.addEventListener('mousedown', function (event) {
                 // create a div element and store it within the document body
                 var div = document.createElement('div');
                 div.className = 'rectangle';
@@ -44,14 +50,11 @@
                 // register an event handler for the mousemove event handler
                 document.body.addEventListener('mousemove', mouseMoveHandler);
             });
-                    //
-            // listen for mouseup event
-                // de register the mousemove event handler
 
-
-
-
-
+            document.body.addEventListener('mouseup', function (event) {
+                if (mouseMoveHandler.div.width === 0) document.body.removeChild(mouseMoveHandler.div);
+                document.body.removeEventListener('mousemove', mouseMoveHandler);
+            });
         });
 
     </script>
@@ -60,3 +63,11 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
