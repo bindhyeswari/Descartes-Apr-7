@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font: 200 1em 'Helvetica Neue';
+}
+section.explorer {
+    min-height: 100%;
+    padding: 1em;
+    width: 50%;
+
+    border-right: 1px solid gray;
+    box-sizing: border-box;
+    float: left;
+}
+
+section.document {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 1em;
+}
+
+ul#context-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+
+    list-style-type: none;
+    background-color: #ffe2a2;
+    color: #976726;
+    padding: 0.25em 0.25em;
+    border: 1px solid #573707;
+}
+
+ul#context-menu > li {
+    font-size: 0.95em;
+    padding: 0.2em 0.4em;
+}
+
+ul#context-menu > li:hover {
+    background-color: #bd7116;
+    cursor: pointer;
+    color: white;
+
+    transition: all 500ms ease;
+}
