@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            margin: 0;
+            font: 300 1em 'Helvetica Neue';
+        }
+        ul#context-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+
+            list-style-type: none;
+            background-color: #ffe2a2;
+            color: #976726;
+            padding: 0.25em 0.25em;
+            border: 1px solid #573707;
+        }
+
+        ul#context-menu > li {
+            font-size: 0.95em;
+            padding: 0.2em 0.4em;
+        }
+
+        ul#context-menu > li:hover {
+            background-color: #bd7116;
+            cursor: pointer;
+            color: white;
+
+            transition: all 500ms ease;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var ul = document.querySelector('#context-menu');
+
+            function fn(event) {
+                event.preventDefault();
+
+                ul.style.top = event.clientX + 'px';
+                ul.style.left = event.clientY + 'px';
+                ul.style.display = 'block';
+            }
+
+            document.addEventListener('contextmenu', fn, false);
+        });
+    </script>
+</head>
+<body>
+    <ul id="context-menu">
+        <li>New Folder</li>
+        <li>New Document</li>
+    </ul>
+</body>
+</html>
